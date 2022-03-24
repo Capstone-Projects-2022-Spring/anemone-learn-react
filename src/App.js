@@ -1,11 +1,13 @@
-import logo from './logo.svg';
 import './App.css';
+import React, {useEffect} from 'react';
 
 function App() {
+  const [duck, setDuck] = React.useState("https://random-d.uk/api/87.jpg");
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <img src={duck} className="App-logo" alt="duck" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>

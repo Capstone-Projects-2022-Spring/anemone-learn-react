@@ -1,23 +1,25 @@
 import './App.css';
-import React, {useEffect} from 'react';
+import React from 'react';
 import axios from "axios";
 
 function App() {
   const [duck, setDuck] = React.useState("https://random-d.uk/api/87.jpg");
   const getDuck = async () => {
     let json
-      var config = {
-          method: 'get',
-          url: 'https://random-d.uk/api/v2/quack',
-          headers: { }
-      };
-
-      await axios.get(config)
-        .then(function (response){
-          json = response.data
-            // setDuck(json.url);
-          console.log(json)
-        })
+    var config = {
+      method: 'get',
+      // url: 'https://random-d.uk/api/http/100.jpg'
+      url: 'https://random-d.uk/api/quack',
+      
+  };
+  await axios.get(config, { crossdomain: true,
+    headers: {'Access-Control-Allow-Origin': true} })
+    .then(function (response){
+      json = response.data
+        setDuck(json.url);
+      console.log(response)
+      console.log(response.data)
+    })
         .catch(err => {
           alert("something went wrong:"+err);
           //location.reload();

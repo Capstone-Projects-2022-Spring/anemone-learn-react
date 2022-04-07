@@ -3,19 +3,13 @@ import React, {useEffect} from 'react';
 import axios from "axios";
 
 function App() {
-  const [duck, setDuck] = React.useState("https://random-d.uk/api/87.jpg");
-  const getDuck = async () => {
+  const [cat, setCat] = React.useState("https://cdn.discordapp.com/attachments/881928505464610886/910348671890108456/20211116_195618.jpg");
+  const getCat = async () => {
     let json
-      var config = {
-          method: 'get',
-          url: 'https://random-d.uk/api/v2/quack',
-          headers: { }
-      };
-
-      await axios.get(config)
+      await axios.get('https://cataas.com/cat?json=true')
         .then(function (response){
           json = response.data
-            // setDuck(json.url);
+            setCat('https://cataas.com'+json.url);
           console.log(json)
         })
         .catch(err => {
@@ -26,7 +20,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={duck} className="App-logo" alt="duck" />
+        <img src={cat} className="App-logo" alt="duck" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
@@ -39,8 +33,8 @@ function App() {
           Learn React
         </a>
           <button onClick={() => {
-              getDuck();
-          }}>quack</button>
+              getCat();
+          }}>meow</button>
       </header>
     </div>
   );

@@ -48,14 +48,25 @@ function CatComponent() {
 
 CatComponent.propTypes = {src: PropTypes.string};
 
+function NameComponent(props) {
+    return <><h1>{props.name}</h1>
+    <button onClick={()=>{props.setName('Fay')}}>SET FAY</button>
+    </>;
+}
+
 function App() {
   const [value, setValue] = React.useState(1);
+  const [name, setName] = React.useState('Ian');
+    const setNameContext = (context) => {
+        console.log(context);
+        setName(context);
+    };
   function view(value) {
       // eslint-disable-next-line default-case
       switch (value) {
           case 0: return <Search/>
           case 1: return  <CatComponent/>
-          case 2: return  <h1>hello</h1>
+          case 2: return  <NameComponent name={name} setName={setNameContext} />
           default: return <CatComponent/>
       }
   }
@@ -64,6 +75,7 @@ function App() {
     <div className="App">
       <header className="App-header">
           <>
+              <h1>{name}</h1>
               {view(value)}
           </>
 

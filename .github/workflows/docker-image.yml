@@ -15,4 +15,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag applebaumian/anemone-learn-react:$(date +%s) --tag applebaumian/anemone-learn-react:latest --push
+      run: docker build . --file Dockerfile --tag applebaumian/anemone-learn-react:$(date +%s) --tag applebaumian/anemone-learn-react:latest
+    - name: Push Docker Image
+      run: docker push -a applebaumian/anemone-learn-react
